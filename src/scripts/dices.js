@@ -1,10 +1,20 @@
 
 let diceType = 10
+const newDice = '<div class="circle" name="display" data-testid="display">0</div>'
 
 const setUpButtons = () => {
 
   document.getElementsByName('rollDice')[0].addEventListener('click', () => {
   rollDice()
+  })
+
+  document.getElementsByName('clean')[0].addEventListener('click', () => {
+  deleteAllDices()
+  })
+
+
+ document.getElementsByName('addNewDice')[0].addEventListener('click', () => {
+  addNewDice()
   })
 
   document.getElementsByName('D6')[0].addEventListener('click', () => {
@@ -27,16 +37,31 @@ const setUpButtons = () => {
 
 }
 
-const rollDice = () => {
+const addNewDice = () => {
+  const circleContainer = document.getElementsByName('dices')[0];
+  circleContainer.innerHTML += newDice;
+}
 
-let newRandomNumber = randomNumber() 
-setDisplay(newRandomNumber)
+const deleteAllDices = () => {
+
+ const circleContainer = document.getElementsByName('dices')[0];
+  circleContainer.innerHTML = newDice
 
 }
 
-const setDisplay = (value) => {
+const rollDice = () => {
 
-document.getElementsByName('display')[0].innerText = value
+ const diceElements = document.getElementsByName('dices')[0].querySelectorAll('.circle');
+  
+  diceElements.forEach((diceElement) => {
+    const newRandomNumber = randomNumber()
+    setDisplay(diceElement, newRandomNumber)
+  })
+}
+
+const setDisplay = (element,value) => {
+
+ element.innerText = value
 
 }
 

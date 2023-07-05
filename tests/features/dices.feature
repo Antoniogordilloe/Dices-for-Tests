@@ -21,3 +21,7 @@ Examples:
 |      D10 |         1  |         10  |
 |      D20 |         1  |         20  |
 |      D99 |         1  |         99  |
+
+Scenario: Pressing the Clean button
+When the user presses the 'clean' button
+Then the display should show the following value: '0'
