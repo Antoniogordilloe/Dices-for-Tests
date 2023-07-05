@@ -17,6 +17,12 @@ Then('the display should show the following value: {string}', async (string) => 
   expect(display).toBe(string)
 })
 
+Then('{int} dices should appear on screen', async (number) => {
+  const diceCount = await page.locator('[data-testid="display"]').count();
+
+  expect(diceCount).toBe(number);
+})
+
 Then('the display should show a value between: {string} and {string}', async (string1, string2) => {
   const display = await page.locator('data-testid=display').innerText();
   const value = parseInt(display); // Parse the display value to an integer
@@ -37,3 +43,14 @@ Then('the display should NOT show the following value: {string}', async (string)
 When('the user presses the {string} button', async (string) => {
   await buttonClick(string)
 })
+
+
+When('the user presses the {string} button {int} times', async (buttonName, times) => {
+  await buttonClickMultipleTimes(buttonName, times);
+})
+
+const buttonClickMultipleTimes = async (buttonName, times) => {
+  for (let i = 0; i < times; i++) {
+    await buttonClick(buttonName);
+  }
+};

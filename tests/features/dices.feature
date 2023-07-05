@@ -25,3 +25,16 @@ Examples:
 Scenario: Pressing the Clean button
 When the user presses the 'clean' button
 Then the display should show the following value: '0'
+
+Scenario: Pressing the Add Dice button
+When the user presses the 'addNewDice' button <times> times
+Then <numberOfDices> dices should appear on screen 
+
+Examples:
+| times  |  numberOfDices |
+|     0  |              1 |
+|     1  |              2 |
+|     2  |              3 |
+|     3  |              4 |
+|     4  |              5 |
+
