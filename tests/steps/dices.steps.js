@@ -25,8 +25,7 @@ Then('{int} dices should appear on screen', async (number) => {
 
 Then('the display should show a value between: {string} and {string}', async (string1, string2) => {
   const display = await page.locator('data-testid=display').innerText();
-  const value = parseInt(display); // Parse the display value to an integer
-
+  const value = parseInt(display); 
   const lowerLimit = parseInt(string1);
   const upperLimit = parseInt(string2);
 
@@ -54,3 +53,8 @@ const buttonClickMultipleTimes = async (buttonName, times) => {
     await buttonClick(buttonName);
   }
 };
+
+Then('the {string} button should be disabled', async (string) => {
+  const locator = page.locator(`[data-testid="${string}"]`)
+  await expect(locator).toBeDisabled()
+})

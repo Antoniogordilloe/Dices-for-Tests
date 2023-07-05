@@ -22,9 +22,6 @@ Examples:
 |      D20 |         1  |         20  |
 |      D99 |         1  |         99  |
 
-Scenario: Pressing the Clean button
-When the user presses the 'clean' button
-Then the display should show the following value: '0'
 
 Scenario: Pressing the Add Dice button
 When the user presses the 'addNewDice' button <times> times
@@ -37,4 +34,14 @@ Examples:
 |     2  |              3 |
 |     3  |              4 |
 |     4  |              5 |
+
+Scenario: Pressing the Clean button
+When the user presses the 'clean' button
+Then the display should show the following value: '0'
+Then 1 dices should appear on screen 
+
+Scenario: Disable the Add new Dice button by Reaching the dice limit
+When the user presses the 'addNewDice' button 9 times
+Then the 'addNewDice' button should be disabled
+
 

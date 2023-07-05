@@ -1,6 +1,8 @@
 
 let diceType = 10
 const newDice = '<div class="circle" name="display" data-testid="display">0</div>'
+const MAX_NUMBER_DICES = 10
+
 
 const setUpButtons = () => {
 
@@ -11,7 +13,6 @@ const setUpButtons = () => {
   document.getElementsByName('clean')[0].addEventListener('click', () => {
   deleteAllDices()
   })
-
 
  document.getElementsByName('addNewDice')[0].addEventListener('click', () => {
   addNewDice()
@@ -37,15 +38,43 @@ const setUpButtons = () => {
 
 }
 
+
+const enableButton = (button) => {
+  document.getElementsByName(button)[0].disabled = false
+}
+
+const disableButton = (button) => {
+  document.getElementsByName(button)[0].disabled = true
+
+}
 const addNewDice = () => {
+  
   const circleContainer = document.getElementsByName('dices')[0];
   circleContainer.innerHTML += newDice;
+  
+  if ( getCurrentNumberOfDices() === MAX_NUMBER_DICES){
+  disableButton('addNewDice')
+  }
+  
+}
+
+
+const getCurrentNumberOfDices = () => {
+
+const dicesContainer = document.querySelector('[data-testid="dices"]')
+const diceElements = dicesContainer.querySelectorAll('.circle')
+const diceCount = diceElements.length
+
+console.log(diceCount)
+return diceCount
+
 }
 
 const deleteAllDices = () => {
 
  const circleContainer = document.getElementsByName('dices')[0];
   circleContainer.innerHTML = newDice
+  enableButton('addNewDice')
 
 }
 
