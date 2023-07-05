@@ -12,7 +12,7 @@ Then the display should NOT show the following value: '0'
 
 Scenario: Rolling the different dices
 When the user presses the '<diceType>' button
-When the user presses the 'rollDice' button
+And the user presses the 'rollDice' button
 Then the display should show a value between: '<firstValue>' and '<secondValue>'
 
 Examples:
@@ -37,7 +37,7 @@ Examples:
 
 Scenario: Pressing the Clean button
 When the user presses the 'clean' button
-Then the display should show the following value: '0'
+And the display should show the following value: '0'
 Then 1 dices should appear on screen 
 
 Scenario: Disable the Add new Dice button by Reaching the dice limit
@@ -46,6 +46,5 @@ Then the 'addNewDice' button should be disabled
 
 Scenario: Reenabling the Add new Dice button by pressing the Clean button
 When the user presses the 'addNewDice' button 9 times
-Then the 'addNewDice' button should be disabled
-When the user presses the 'clean' button
+And the user presses the 'clean' button
 Then the 'addNewDice' button should be enabled
