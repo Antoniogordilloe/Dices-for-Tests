@@ -44,4 +44,8 @@ Scenario: Disable the Add new Dice button by Reaching the dice limit
 When the user presses the 'addNewDice' button 9 times
 Then the 'addNewDice' button should be disabled
 
-
+Scenario: Reenabling the Add new Dice button by pressing the Clean button
+When the user presses the 'addNewDice' button 9 times
+Then the 'addNewDice' button should be disabled
+When the user presses the 'clean' button
+Then the 'addNewDice' button should be enabled

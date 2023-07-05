@@ -58,3 +58,9 @@ Then('the {string} button should be disabled', async (string) => {
   const locator = page.locator(`[data-testid="${string}"]`)
   await expect(locator).toBeDisabled()
 })
+
+
+Then('the {string} button should be enabled', async (string) => {
+  const locator = page.locator(`[data-testid="${string}"]`)
+  await expect(locator).toBeEnabled()
+})

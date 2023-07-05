@@ -1,4 +1,5 @@
-   body {
+   
+body {
        display: flex;
        flex-direction: column;
        align-items: center;
@@ -15,19 +16,16 @@
    .circle {
        width: 100px;
        height: 100px;
-       border-radius: 50%;
+       border-radius: 10%;
        background-color: #ffcaa1;
        margin: 5px;
        display: flex;
        justify-content: center;
        align-items: center;
        text-align: center;
+        font-size: 24px
    }
 
-   .circle-text {
-       color: #fff;
-       font-size: 24px;
-   }
 
    .button-container {
        display: flex;
